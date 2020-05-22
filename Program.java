@@ -1,40 +1,44 @@
-package application;
-import entities.Products;
+package app;
 
-import java.util.Locale;
+import entidades.Quartos;
+
 import java.util.Scanner;
 
 public class Program {
+
     public static void main(String[] args){
-        Scanner leia = new Scanner(System.in);
-        Locale.setDefault(Locale.US);
-        int qtd,remove;
-        //Products é a classe e produto é varivel criada nessa classe Program
-        Products produto = new Products() ;
-        System.out.print("NOME: ");
-        produto.nome = leia.nextLine();
-        System.out.print("PREÇO: ");
-        produto.preco = leia.nextDouble();
-        System.out.print("QUANTIDADE: ");
-        produto.quatidade = leia.nextInt();
-        System.out.println();
-        System.out.println("PRODUTO DATA: "+produto);
-        System.out.println();
-        System.out.println("ENTRE COM O NÚMERO DO PRODUTO PARA ADD NO ESTOQUE: ");
-        qtd = leia.nextInt();
-        produto.addProtucts(qtd);
-        System.out.println();
-        System.out.println("ATUALIZAÇÃO DO ESTOQUE "+produto);
-        System.out.println();
-        System.out.println("ENTRE COM O NÚMERO DO PRODUTO PARA REMOVER DO ESTOQUE: ");
-        remove = leia.nextInt();
-        produto.revomeProdutcs(remove);
-        System.out.println("ATUALIZAÇÃO DO ESTOQUE "+produto);
+        Scanner sc = new Scanner(System.in);
 
-        leia.close();
+        //instanciando a Classe Quartos dentro de 1
+        //vetor de 10 posições
+        Quartos estudantes[] = new Quartos[10];
 
+        System.out.print("QUANTOS ALUNOS: ");
+        int alunos = sc.nextInt();
 
+        for (int i = 1 ; i <= alunos; i++){
+            sc.nextLine();
+            System.out.println("QUARTO #"+i);
+            System.out.print("NOME: ");
+            String nome = sc.nextLine();
+            System.out.print("E-MAIL: ");
+            String email = sc.nextLine();
+            System.out.print("QUARTO: ");
+            int quarto = sc.nextInt();
+            /*JOGUEI A VAR QUARTO DENTRO DO VETOR ESTUDANTES[] E ESTANCIE O CONTRUTOR DENTRO DO VETOR*/
+            estudantes[quarto] = new Quartos(nome, email);
+        }
 
+        System.out.println();
+        System.out.println("QUARTOS:");
+        for (int i = 0; i < 10; i++){
+            if(estudantes[i] != null){
+                //estudantes[i], vai retornar o estudantes cadastrados
+                //+i, vai retornar os quartos
+                System.out.println(i+": "+estudantes[i]);
+            }
+        }
+        sc.close();
     }
 
 }
